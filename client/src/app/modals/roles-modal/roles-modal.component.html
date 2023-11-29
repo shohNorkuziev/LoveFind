@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Roles for {{username}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #rolesForm="ngForm" id="rolesForm" action="">
+      <select [(ngModel)]="selectedRole"  name="selectedRole" id="selectedRole" (change)="update($event)" required>
+        <option class="form-check"  [value]="role" *ngFor="let role of availableRoles">
+            <label >{{role}}</label>
+        </option>
+      </select>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"  (click)="bsModalRef.hide()">Submit</button>
+  </div>

@@ -1,0 +1,85 @@
+@import "../../../vars.scss";
+$transition-time: 350ms;
+
+.card{
+    width: 12rem ;
+    height: 20rem ;
+    overflow: hidden;
+    padding: 0;
+    margin: 1rem;
+    position: relative;
+    transition: $transition-time ease-out;
+    box-shadow: 0px 5px 20px #f2f2f200;
+    & img{
+        transform: scale(1);
+        transition: $transition-time ease-out;
+        opacity: 0.7;
+    }
+    &:hover{
+        transition: $transition-time ease-out;
+        transform: translateY(-.5rem);
+        cursor: pointer;
+        & img{
+        transform: scale(1.2);
+        transition: $transition-time ease-out;
+        opacity: 0.7;
+        }
+    }
+    &:hover &-img-wrapper .member-icons{
+        bottom: 7rem;
+        opacity: 1;
+        transition: $transition-time;
+    }
+
+    &-img-wrapper{
+        overflow: hidden;
+        position: relative;  
+    }
+
+    &-body{
+        background-image: linear-gradient(#00000000,#000000);
+        width: 100%;
+    position: absolute;
+        bottom: 0rem;
+    }
+    &-img-top{
+        height: 20rem;
+        object-fit: cover;
+    }
+}
+
+.btn{
+    border-radius: 50%;
+}
+
+.buttons-wrapper{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: .5rem;
+}
+
+.member-icons{
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+    right: 0;
+    margin-left:auto;
+    margin-right: auto;
+    opacity: 0;
+    transition: $transition-time;
+}
+
+@keyframes fa-blink {
+    0% {opacity: 1;}
+    100% {opacity: 0.4;}
+}
+
+.is-online {
+    animation: fa-blink 1.5s linear infinite;
+    color: rgb(1,189,43);
+}
+
+.liked i{
+    color: rgb(255, 16, 255);
+}

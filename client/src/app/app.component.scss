@@ -1,0 +1,23 @@
+.main-nav-margin{
+    padding-left: 30rem !important;
+}
+
+@media (max-width: 1000px) {
+    .main-nav-margin {
+        padding-left: 0rem !important;
+    }
+  }
+  
+
+.rainbow-progress-bar{
+    // display: none;
+}    
+
+.main-container {
+    top: 0;
+    left: 0%;
+    position: absolute;
+    min-height: 100vh;
+    padding-top: 5rem;
+    width: 100%;
+}

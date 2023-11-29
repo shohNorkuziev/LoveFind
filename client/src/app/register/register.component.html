@@ -1,0 +1,44 @@
+<div class="register-wrapper">
+<form [formGroup]="registerForm" class="register" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+    <h2 class="text-center text-primary text-gradient">Sign up</h2>
+    <hr>
+
+    <div class="mb-3">
+        <label class="m-1" >I am a:</label>
+        <label class="form-check-label m-1">
+            <input type="radio" class="form-check-input" value="male" formControlName="gender"> Male
+        </label>
+        <label class="form-check-label m-1">
+            <input type="radio" class="form-check-input" value="female" formControlName="gender"> Female
+        </label>
+    </div>
+
+    <app-text-input [formControl]="$any(registerForm.controls['username'])" [minlength]="4" [maxlength]="32"  [label]="'Username'" [type]="'text'">
+    </app-text-input>
+    <app-text-input [formControl]="$any(registerForm.controls['knownAs'])" [minlength]="2" [maxlength]="16" [label]="'Known As'" [type]="'text'">
+    </app-text-input>
+    <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Email'" [type]="'email'">
+    </app-text-input>
+    <app-date-picker [formControl]="$any(registerForm.controls['dateOfBirth'])" [maxDate]="maxDate"
+        [label]="'Date of Birth'"></app-date-picker>
+    <app-text-input [formControl]="$any(registerForm.controls['city'])" [minlength]="2" [maxlength]="32"  [label]="'City'" [type]="'text'">
+    </app-text-input>
+    <app-text-input [formControl]="$any(registerForm.controls['country'])" [minlength]="2" [maxlength]="32"  [label]="'Country'" [type]="'text'">
+    </app-text-input>
+    <app-text-input [formControl]="$any(registerForm.controls['password'])" [maxlength]="16" [minlength]="4" [label]="'Password'" [type]="'password'">
+    </app-text-input>
+    <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [maxlength]="16" [minlength]="4" [label]="'Confirm Password'"
+        [type]="'password'"></app-text-input>
+
+    <div class="row" *ngIf="validationErrors">
+        <ul class="text-danger">
+            {{validationErrors}}
+        </ul>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary me-2" type="submit" [disabled]="!registerForm.valid" >Register</button>
+        <button class="btn btn-default" type="submit" routerLink="/">Go back</button>
+    </div>
+</form>
+</div>

@@ -1,0 +1,121 @@
+@import "../../vars";
+
+.dropdown-toggle,
+.dropdown-item {
+    cursor: pointer;
+}
+
+img {
+    max-height: 50px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border: 2px solid white;
+    display: inline;
+    border-radius: 50%;
+}
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 25rem;
+    height: 100vh;
+    position: fixed !important;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    z-index: 100;
+    background-color: #202020;
+    position: relative;
+
+    &-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 2rem;
+        margin-right: 0.7rem;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+    &-show {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 2rem;
+        margin-right: 0.7rem;
+        background: none;
+        border: none;
+        padding: 0;
+        z-index: 1000;
+    }
+
+    &-row {
+        top: 0;
+        width: 100%;
+        padding: .5rem;
+        display: flex;
+        padding-left: 1rem;
+        align-items: center;
+        background-color: #151515;
+        & i{
+            width: 1.5rem;
+        }
+    }
+
+    &-profile {
+        background: radial-gradient(circle at 0 0, $color-primary 0%, $color-secondary 100%);
+        justify-content: space-between;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    &-likes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+        font-size: 2rem;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &-link {
+        font-size: 600;
+        width: 100%;
+        padding: .5rem;
+        border-radius: 5px;
+        transition: 100ms;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.1rem;
+        &:hover {
+            background-color: #202020;
+            transform: scale(1.04);
+        }
+        & i {
+            margin-right: 1rem;
+        }
+    }
+    &-header {
+        font-size: 1.2rem;
+        padding: 1rem;
+        flex: 1;
+        width: 100%;
+        margin: 0;
+    }
+}
+.thread {
+    width: 100%;
+}
+@media (max-width: 1000px) {
+    .navigation {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+  

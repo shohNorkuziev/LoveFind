@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" class="login-form" (ngSubmit)="loginForm.valid && login()"  autocomplete="on">
+    <div>
+        <h2 class="text-center text-gradient">Log in</h2>
+        <hr>
+
+        <app-text-input [formControl]="$any(loginForm.controls['username'])" [label]="'Username'" [type]="'text'">
+        </app-text-input>
+        <app-text-input [formControl]="$any(loginForm.controls['password'])" [maxlength]="16" [minlength]="4" [label]="'Password'" [type]="'password'">
+        </app-text-input>
+
+        <div class="text-center">
+            <button class="btn btn-primary me-2" [disabled]="!loginForm.valid" type="submit">Login</button>
+            <a class="btn btn-default" routerLink="/register">Sign Up</a>
+        </div>
+    </div>
+</form>

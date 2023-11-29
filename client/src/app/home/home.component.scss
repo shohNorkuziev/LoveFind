@@ -1,0 +1,79 @@
+@import '../../vars.scss';
+
+.home {
+    background-image:linear-gradient(#00000000,#000000ff), url("/assets/background.jpg") ;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-width: 100vw;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    filter: saturate(1);
+
+    &-header{
+        font-size: 3rem;
+    }
+    &-btn{
+         
+            background-image: linear-gradient(to right, $color-primary,$color-secondary);
+            padding: 10px 40px;
+            text-align: center;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            border-radius: 10px;
+            font-size: 1rem;
+
+          &:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+         
+    }
+}
+.header {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.members {
+
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 10rem;
+  &-header{
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    padding: 1rem;
+    font-size: 2.5rem;
+  }
+
+&-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    & > *:nth-child(2){
+      padding-bottom: 50px;
+    }
+  }
+  &-card{
+    transition: .3s;
+    &:hover{
+      transform: translateY(-2rem);
+
+    }
+  }
+
+}

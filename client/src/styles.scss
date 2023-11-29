@@ -1,0 +1,95 @@
+@import "./vars.scss";
+
+.text-gradient{
+    background: radial-gradient(circle at 0 0, $color-primary 0%, $color-secondary 100%);;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body{
+    // background: -webkit-radial-gradient(58% 130%,$color-secondary 0%, $color-primary 100%) no-repeat center bottom fixed;
+    background-position: bottom;
+    background: #101010;
+    min-height: 100vh;
+    min-width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.btn-primary{
+         
+        background-image: linear-gradient(to right, $color-primary,$color-secondary);
+        text-align: center;
+        transition: 0.3s;
+        background-size: 200% auto;
+        color: white;            
+        border-radius: 10px;
+        border: none;
+
+
+      &:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+      }
+     
+}
+
+.unactive{
+    background: gray !important;
+}
+
+#rainbow-progress-bar {
+    position: absolute;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  
+    width: 100%;
+    height: 4px;
+  
+    background: linear-gradient(124deg,$color-primary,$color-secondary);
+    background-size: 900% 900%;
+   z-index: 100;
+    animation: rainbow 1s ease infinite;
+  }
+  @keyframes rainbow { 
+    0% { background-position: 0% 100%; }
+    50% { background-position: 100% 200%; }
+    100% {background-position: 0% 100%; }
+  }
+
+  .bs-datepicker-head{  
+    background: linear-gradient(124deg,$color-primary,$color-secondary);
+  }
+
+  .bs-datepicker {
+    background: #303030;
+    box-shadow: none;
+  }
+
+  .bs-datepicker-body span[bsdatepickerdaydecorator] {
+    color: #f2f2f2 !important;
+  }
+  .bs-datepicker-body span.is-other-month[bsdatepickerdaydecorator]{
+    color: #707070 !important;
+  }
+  .bs-datepicker-body span.disabled[bsdatepickerdaydecorator] {
+    color: #202020 !important;
+  }
+
+  .modal-content{
+    background: rgb(67 67 67 / 79%);
+  }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

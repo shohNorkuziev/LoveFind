@@ -1,0 +1,16 @@
+<h2 class="ms-5">User Managment</h2>
+<div class="tab-panel">
+    <tabset class="member-tabset">
+
+        <div class="container">
+            <app-user-management></app-user-management>
+        </div>
+        <tab heading="Reports" *appHasRole="['Admin','Moderator']"></tab>
+        <div class="container">
+        </div>
+        <tab heading="Bans" *appHasRole="['Admin','Moderator']"></tab>
+        <div class="container">
+            <app-photo-managment></app-photo-managment>
+        </div>
+    </tabset>
+</div>

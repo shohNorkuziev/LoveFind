@@ -1,0 +1,86 @@
+@import '../../vars.scss';
+
+
+.cards-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: 50vh;
+}
+.card-wrapper{
+    position: absolute;
+}
+
+.btn{
+    border-radius: 50%;
+    font-size: 2rem;
+    width: 5rem;
+    height: 5rem;
+}
+.link{
+    transition: 0.2s;
+    &:hover{
+        transform: scale(1.5);
+        cursor: pointer;
+    }
+}
+
+
+.buttons-wrapper {
+    margin-top: 36rem;
+    display: flex;
+    width: 25rem;
+    justify-content: space-around;
+}
+
+.card-wrapper *{
+    user-select: none;
+}
+
+.heart{
+    font-size: 8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: $color-secondary;
+    transform-origin: center;
+}
+.dislike{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 8rem;
+    color: red;
+    transform-origin: center;
+}
+
+
+.swipe-left{
+    animation: fadeLeft .5s forwards;
+}
+
+.swipe-right{
+    animation: fadeRight .5s forwards;
+}
+
+@keyframes fadeLeft {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translate(-300px,-100px) rotate(25deg);
+    }
+}
+
+@keyframes fadeRight {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translate(300px,-100px) rotate(25deg);
+    }
+}

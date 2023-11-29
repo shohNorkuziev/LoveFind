@@ -1,0 +1,22 @@
+.filter-form{
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.sort-by{
+    background-color: liner;
+}
+.cards{
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-left: 1rem;
+
+}
+
+@media (max-width: 500px) {
+    .filter {
+      width: 15rem;
+      justify-content: space-between;
+    }
+  }
