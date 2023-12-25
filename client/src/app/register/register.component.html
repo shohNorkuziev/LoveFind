@@ -1,15 +1,15 @@
 <div class="register-wrapper">
 <form [formGroup]="registerForm" class="register" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
-    <h2 class="text-center text-primary text-gradient">Sign up</h2>
+    <h2 class="text-center text-primary text-gradient">Регистрация</h2>
     <hr>
 
     <div class="mb-3">
-        <label class="m-1" >I am a:</label>
+        <label class="m-1" >Выберите пол:</label>
         <label class="form-check-label m-1">
-            <input type="radio" class="form-check-input" value="male" formControlName="gender"> Male
+            <input type="radio" class="form-check-input" value="male" formControlName="gender"> муж
         </label>
         <label class="form-check-label m-1">
-            <input type="radio" class="form-check-input" value="female" formControlName="gender"> Female
+            <input type="radio" class="form-check-input" value="female" formControlName="gender"> жен
         </label>
     </div>
 
@@ -37,8 +37,8 @@
     </div>
 
     <div class="text-center">
-        <button class="btn btn-primary me-2" type="submit" [disabled]="!registerForm.valid" >Register</button>
-        <button class="btn btn-default" type="submit" routerLink="/">Go back</button>
+        <button class="btn btn-primary me-2" type="submit" [disabled]="!registerForm.valid" >Зарегистрироваться</button>
+        <button class="btn btn-default" type="submit" routerLink="/">Назад</button>
     </div>
 </form>
 </div>

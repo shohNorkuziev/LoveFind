@@ -9,31 +9,31 @@
             <img src="{{user.photoUrl || './assets/user.png'}}" alt="">
             <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>{{user.knownAs}} </a>
             <div class="dropdown-menu mt-2" *dropdownMenu>
-                <a href="" class="dropdown-item " routerLink="/member/edit">Edit Profile</a>
-                <a href="" class="dropdown-item " (click)="logout()">Logout</a>
+                <a href="" class="dropdown-item " routerLink="/member/edit">Редактировать профиль</a>
+                <a href="" class="dropdown-item " (click)="logout()">Выйти</a>
             </div>
         </div>
 
 
         <div *ngIf="!(accountService.currentUser$ | async) as user">
-            <a routerLink="/login" routerLinkActive="active">Log in</a>
+            <a routerLink="/login" routerLinkActive="active">Войти</a>
         </div>
 
     </div>
     <div class="navigation-row" *ngIf="(accountService.currentUser$ | async) as user">
-        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/lists',true)"  routerLink="/lists" routerLinkActive="active"><i class="fa fa-heart"></i> Likes</a>
+        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/lists',true)"  routerLink="/lists" routerLinkActive="active"><i class="fa fa-heart"></i> Нравится</a>
     </div>
     <div class="navigation-row" *ngIf="(accountService.currentUser$ | async) as user">
-        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/members',true)" routerLink="/members" routerLinkActive="active"><i class="fa fa-users"></i> Members list</a>
+        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/members',true)" routerLink="/members" routerLinkActive="active"><i class="fa fa-users"></i> Список участников</a>
     </div>
     <div class="navigation-row" *ngIf="(accountService.currentUser$ | async) as user">
-        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/cards',true)"  routerLink="/cards" routerLinkActive="active"><i class="fa fa-clipboard"></i> Swipe cards</a>
+        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/cards',true)"  routerLink="/cards" routerLinkActive="active"><i class="fa fa-clipboard"></i> Смотреть анкеты</a>
     </div>
     <div class="navigation-row" *appHasRole="['admin','moderator']">
-        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/admin/users',true)"  routerLink="/admin/users" routerLinkActive="active"><i class="fa fa-user"></i> Users managment</a>
+        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/admin/users',true)"  routerLink="/admin/users" routerLinkActive="active"><i class="fa fa-user"></i> Управление пользователями</a>
     </div>
     <div class="navigation-row" *appHasRole="['admin','moderator']">
-        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/admin/reports',true)"  routerLink="/admin/reports" routerLinkActive="active"><i class="fa fa-list"></i> Reports</a>
+        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/admin/reports',true)"  routerLink="/admin/reports" routerLinkActive="active"><i class="fa fa-list"></i> Отчеты</a>
     </div>
 
     <!-- <div class="navigation-row navigation-members">
@@ -54,7 +54,7 @@
     </div> -->
 
     <h2 class="navigation-header  ">
-        Last messages
+        Последние сообщение
         <button class="btn"><i class="fa fa-refresh" (click)="messageService.getMessagesThreadsInfo()"></i></button>
     </h2>
     <div class="thread" *ngFor="let thread of messageService.messageThreadsInfo$ | async">

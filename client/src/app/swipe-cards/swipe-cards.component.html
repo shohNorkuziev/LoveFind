@@ -11,12 +11,10 @@
     </div>
     <div class="heart" *ngIf="members.length>0"><i [@like]="animationState" class="fa fa-heart"></i></div>
     <div class="dislike" *ngIf="members.length>0"><i [@dislike]="animationState2" class="fa fa-close"></i></div>
-    <h2 class="text-muted p-5" *ngIf="members.length==0">There is no more members that we can show you :( <br><a
-            *ngIf="members.length==0" routerLink="/members" class="text-gradient link">Look at full list of our
-            members</a>
-        <span [hidden]="preventLike"> <br> or <br>
-            <a *ngIf="members.length==0" (click)="resetDislikes()" class="text-gradient link">Click here to reset
-                dislikes</a>
+    <h2 class="text-muted p-5" *ngIf="members.length==0">Больше нет участников, которых мы могли бы вам показать :( <br><a
+            *ngIf="members.length==0" routerLink="/members" class="text-gradient link">Посмотрите на полный список наших участников</a>
+        <span [hidden]="preventLike"> <br> или <br>
+            <a *ngIf="members.length==0" (click)="resetDislikes()" class="text-gradient link">Нажмите здесь, чтобы сбросить "не нравится"</a>
         </span>
     </h2>
 

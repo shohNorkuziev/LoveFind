@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="archiwum">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/archiwum.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
