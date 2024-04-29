@@ -1,21 +1,21 @@
 <div class="mb-2">
     <input [type]="type"
         [class.is-invalid]="control.touched && control.invalid"
-        placeholder="{{label}}" 
-        class="form-control" 
+        placeholder="{{label}}"
+        class="form-control"
         [formControl]="control"
         [email]="type==='email'"
         >
     <div class="invalid-feedback" *ngIf="control.errors?.['required']">
-        Please enter a {{label}}
+      Пожалуйста, введите {{label}}
     </div>
     <div class="invalid-feedback" *ngIf="control.errors?.['minlength']">
-        {{label}} is too short
+        {{label}} слишком короткое
     </div>
     <div class="invalid-feedback" *ngIf="control.errors?.['maxlength']">
-        {{label}} is too long
+        {{label}} слишком длинное
     </div>
     <div class="invalid-feedback" *ngIf="control.errors?.['notMatching']">
-        Passwords are not equal
+      Пароли не совпадают
     </div>
 </div>

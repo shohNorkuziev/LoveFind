@@ -13,21 +13,21 @@
         </label>
     </div>
 
-    <app-text-input [formControl]="$any(registerForm.controls['username'])" [minlength]="4" [maxlength]="32"  [label]="'Username'" [type]="'text'">
+    <app-text-input [formControl]="$any(registerForm.controls['username'])" [minlength]="4" [maxlength]="32"  [label]="'Имя пользователя'" [type]="'text'">
     </app-text-input>
-    <app-text-input [formControl]="$any(registerForm.controls['knownAs'])" [minlength]="2" [maxlength]="16" [label]="'Known As'" [type]="'text'">
+    <app-text-input [formControl]="$any(registerForm.controls['knownAs'])" [minlength]="2" [maxlength]="16" [label]="'Известен как'" [type]="'text'">
     </app-text-input>
-    <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Email'" [type]="'email'">
+    <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Эл. почта'" [type]="'email'">
     </app-text-input>
     <app-date-picker [formControl]="$any(registerForm.controls['dateOfBirth'])" [maxDate]="maxDate"
-        [label]="'Date of Birth'"></app-date-picker>
-    <app-text-input [formControl]="$any(registerForm.controls['city'])" [minlength]="2" [maxlength]="32"  [label]="'City'" [type]="'text'">
+        [label]="'Дата рождения'"></app-date-picker>
+    <app-text-input [formControl]="$any(registerForm.controls['city'])" [minlength]="2" [maxlength]="32"  [label]="'Город'" [type]="'text'">
     </app-text-input>
-    <app-text-input [formControl]="$any(registerForm.controls['country'])" [minlength]="2" [maxlength]="32"  [label]="'Country'" [type]="'text'">
+    <app-text-input [formControl]="$any(registerForm.controls['country'])" [minlength]="2" [maxlength]="32"  [label]="'Страна'" [type]="'text'">
     </app-text-input>
-    <app-text-input [formControl]="$any(registerForm.controls['password'])" [maxlength]="16" [minlength]="4" [label]="'Password'" [type]="'password'">
+    <app-text-input [formControl]="$any(registerForm.controls['password'])" [maxlength]="16" [minlength]="4" [label]="'Пароль'" [type]="'password'">
     </app-text-input>
-    <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [maxlength]="16" [minlength]="4" [label]="'Confirm Password'"
+    <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [maxlength]="16" [minlength]="4" [label]="'Подтвердите пароль'"
         [type]="'password'"></app-text-input>
 
     <div class="row" *ngIf="validationErrors">

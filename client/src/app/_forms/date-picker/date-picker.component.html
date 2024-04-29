@@ -1,5 +1,5 @@
 <div class="mb-2">
-    <input type="text" 
+    <input type="text"
         [class.is-invalid]="control.touched && control.invalid"
         class="form-control"
         [formControl]="control"
@@ -10,6 +10,6 @@
         [minDate]="minDate"
     >
     <div *ngIf="control.errors?.['required']" class="invalid-feedback">
-        {{label}} is required
+        {{label}} обязательно
     </div>
 </div>

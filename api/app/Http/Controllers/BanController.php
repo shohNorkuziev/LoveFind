@@ -25,9 +25,9 @@ class BanController extends Controller
     {
         $request->validated();
         $user = User::where('username', $username)->first();
-        if (!$user) return response()->json(['User with that username doesnt exist'], 404);
+        if (!$user) return response()->json(['Пользователя с таким именем пользователя не существует'], 404);
         if ($user->role->name === 'admin' || $user->role->name === 'moderator') {
-            return response()->json(['Forbidden'], 403);
+            return response()->json(['Запрещенный'], 403);
         }
         $ban = new Blockade();
         $ban->user_id = $user->id;
@@ -36,21 +36,21 @@ class BanController extends Controller
         $ban->until = $request->until;
         if ($ban->save()) {
             UserPointsHelper::CalculateAndUpdateUserPoints($user);
-            return response()->json(['User blocked successfuly'], 204);
+            return response()->json(['Пользователь успешно заблокирован'], 204);
         }
-        return response()->json(['Something went wrong'], 400);
+        return response()->json(['Что-то пошло не так'], 400);
     }
 
     public function unban($username)
     {
         $role = Auth::payload()->get('role');
-        if ($role !== 'admin' && $role !== 'moderator') return response('Only admins and moderators has access', 403);
+        if ($role !== 'admin' && $role !== 'moderator') return response('Доступ есть только у администраторов и модераторов', 403);
         $user = User::where('username', $username)->firstOrFail();
         $currentDate = Carbon::now();
         Blockade::where('user_id', $user->id)
             ->where('until', '>=', $currentDate)
             ->delete();
 
-        return response()->json(['User unblocked successfuly'], 204);
+        return response()->json(['Пользователь успешно разблокирован'], 204);
     }
 }

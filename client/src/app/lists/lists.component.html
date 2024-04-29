@@ -1,30 +1,37 @@
 <div class="text-center m-3">
-    <h2>{{predicate === 'liked' ? 'Members I like' : predicate === 'likedBy' ? 'Members who like me' : 'My matches'}}</h2>
+  <h2>
+    {{predicate === 'liked' ? 'Избранное' : predicate === 'likedBy' ? 'Взаимные симпатии' : 'Совпадения'}}
+  </h2>
 </div>
 
 <div class="m-3">
-    <div class="d-flex cards">
-        <form #form="ngForm" class="d-flex mb-3" autocomplete="off">
-        <div class="btn-group">
-            <button name="predicate" (click)="loadLikes()" class="btn btn-primary" [class.unactive]="predicate!=='matches'"   btnRadio="matches" [(ngModel)]="predicate">Matches</button>
-            <button name="predicate" (click)="loadLikes()" class="btn btn-primary" [class.unactive]="predicate!=='liked'"   btnRadio="liked" [(ngModel)]="predicate">I like</button>
-            <button name="predicate" (click)="loadLikes()" class="btn btn-primary " [class.unactive]="predicate!=='likedBy'"   btnRadio="likedBy" [(ngModel)]="predicate">Likes me</button>                    
-        </div>
+  <div class="d-flex cards">
+    <form #form="ngForm" class="d-flex mb-3" autocomplete="off">
+      <div class="btn-group">
+        <button name="predicate" (click)="loadLikes()" class="btn btn-primary" [class.unactive]="predicate!=='matches'"
+            btnRadio="matches" [(ngModel)]="predicate">Совпадения</button>
+        <button name="predicate" (click)="loadLikes()" class="btn btn-primary" [class.unactive]="predicate!=='liked'"  
+          btnRadio="liked" [(ngModel)]="predicate">Избранное</button>
+        <button name="predicate" (click)="loadLikes()" class="btn btn-primary " [class.unactive]="predicate!=='likedBy'"
+            btnRadio="likedBy" [(ngModel)]="predicate">Взаимные симпатии</button>
+      </div>
     </form>
+  </div>
+  <h2 *ngIf="members && members.length===0">
+    {{predicate === 'liked' ? 'Вы пока никого не отметили' : predicate === 'likedBy' ? 'Вас пока никто не отметил' : 'У вас пока нет совпадений'}}
+  </h2>
+  <div class="d-flex cards">
+    <div *ngFor="let member of members">
+      <app-member-card [member]="member"></app-member-card>
     </div>
-    <h2 *ngIf="members && members.length===0">{{predicate === 'liked' ? 'You havent liked anyone yet :(' : predicate === 'likedBy' ? 'No one liked you yet :(' : 'You have no matches yet :('}}</h2>
-    <div class="d-flex cards">
-        <div *ngFor="let member of members">
-            <app-member-card [member]="member"></app-member-card>
-        </div>
 
-    </div>
+  </div>
 </div>
 
 <div class="d-flex justify-content-center" *ngIf="pagination">
-    <pagination [(ngModel)]="pagination.currentPage" [boundaryLinks]="true" [maxSize]="10"
-        [totalItems]="pagination.totalItems" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
-        lastText="&raquo;" (pageChanged)="pageChanged($event)" [itemsPerPage]="pagination.itemsPerPage">
+  <pagination [(ngModel)]="pagination.currentPage" [boundaryLinks]="true" [maxSize]="10"
+    [totalItems]="pagination.totalItems" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+    lastText="&raquo;" (pageChanged)="pageChanged($event)" [itemsPerPage]="pagination.itemsPerPage">
 
-</pagination>
+  </pagination>
 </div>

@@ -61,7 +61,7 @@ class AccountController extends Controller
         $token = Auth::attempt($credentials);
         if (!$token) {
             return response()->json([
-                'error' => 'Unauthorized',
+                'error' => 'Неавторизованн',
             ], 401);
         }
 
@@ -70,7 +70,7 @@ class AccountController extends Controller
         $banned_days = BanHelper::getBannedDays($user);
         if ($banned_days>0)
             return response(
-                'Jestes zablokowany na ' . $banned_days . ' dni. Skontaktuj się z administratorem.',
+                'Вы заблокированы на ' . $banned_days . ' дней. Свяжитесь с администратором.',
                 Response::HTTP_FORBIDDEN
             );
 
@@ -95,8 +95,8 @@ class AccountController extends Controller
     {
         Auth::logout();
         return response()->json([
-            'status' => 'success',
-            'message' => 'Successfully logged out',
+            'status' => 'успех',
+            'message' => 'Успешно вышели из системы',
         ]);
     }
 

@@ -8,17 +8,17 @@
     </div>
     <div class="column">
         <tabset class="member-tabs" #memberTabs>
-            <tab heading="About {{member.knownAs}}" class="pt-3" (selectTab)="onTabActivated($event)">
+            <tab heading="{{member.knownAs}}" class="pt-3" (selectTab)="onTabActivated($event)">
                 <h4>Описание</h4>
                 <p>{{member.introduction}}</p>
                 <h4>Ищете кого</h4>
                 <p>{{member.lookingFor}}</p>
             </tab>
-            <tab heading="Interests" class="pt-3" (selectTab)="onTabActivated($event)">
+            <tab heading="Интересы" class="pt-3" (selectTab)="onTabActivated($event)">
                 <h4>Интересы</h4>
                 <p>{{member.interests}}</p>
             </tab>
-            <tab heading="Messages" class="pt-3" (selectTab)="onTabActivated($event)">
+            <tab heading="Сообщения" class="pt-3" (selectTab)="onTabActivated($event)">
                 <app-member-messages [messages]="this.messages" [username]="member.username"></app-member-messages>
             </tab>
 

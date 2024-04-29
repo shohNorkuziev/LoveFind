@@ -2,11 +2,11 @@
     <div class="header">
         <div *ngIf="!registerMode" style="text-align: center;">
             <h1 class="home-header text-gradient">
-                Find your love here
+              Найдите свою любовь здесь
             </h1>
             <div class="text-center home-container">
-                <button class="home-btn btn btn-primary btn-lg me-2" routerLink="/login">Log in</button>
-                <a class="btn" routerLink="/register">Sign up</a>
+                <button class="home-btn btn btn-primary btn-lg me-2" routerLink="/login">Войти</button>
+                <a class="btn" routerLink="/register">Зарегистрироваться</a>
 
             </div>
         </div>
@@ -18,11 +18,11 @@
     </div>
 
     <div class="members">
-        <h2 class="members-header">Look at out best members</h2>
+        <h2 class="members-header">Посмотрите на наших лучших участников</h2>
 
         <div class="members-container">
             <app-member-profile-card class="members-card" *ngFor="let member of members" [member]="member"></app-member-profile-card>
         </div>
-        <h2 class="members-header">Join and become one of them</h2>
+        <h2 class="members-header">Присоединяйтесь и станьте одним из них</h2>
     </div>
 </div>

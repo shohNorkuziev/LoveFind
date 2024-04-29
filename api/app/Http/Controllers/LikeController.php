@@ -63,28 +63,28 @@ class LikeController extends Controller
     {
         $sourceUser = Auth::user();
         $likedUser = User::where('username', $username)->first();
-       
+
         $sourceUser = User::find($sourceUser->id);
         if (!$likedUser) {
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => 'Пользователь не найден'], 404);
         }
-        
+
         if (strtolower($username) === strtolower($sourceUser->username)) {
-            return response()->json(['error' => 'You cannot like yourself'], 400);
+            return response()->json(['error' => 'Вы не можете ставить лайк себе'], 400);
         }
 
         $userLike = Like::where('source_user_id', $sourceUser->id)
             ->where('target_user_id', $likedUser->id)
             ->first();
-        
+
         if ($userLike) {
-            return response('You already like this user', 400);
+            return response('Вам уже нравится этот пользователь', 400);
         }
-        
+
         $userLike = new Like();
         $userLike->source_user_id = $sourceUser->id;
         $userLike->target_user_id = $likedUser->id;
-        
+
         $mutualLike = Like::where('target_user_id',$sourceUser->id)->where('source_user_id',$likedUser->id)->first();
         if($mutualLike) {
             $mutualLike->is_mutual=true;
@@ -93,13 +93,13 @@ class LikeController extends Controller
         } else $userLike->is_mutual=false;
 
         Like::create($userLike->toArray());
-        
-        if ($sourceUser->save()) {   
+
+        if ($sourceUser->save()) {
             UserPointsHelper::calculateAndUpdateUserPoints($likedUser);
-            return response()->json(['message' => 'User liked successfully','isMatch'=>$userLike->is_mutual], 200);
+            return response()->json(['message' => 'Пользователю успешно понравилось','isMatch'=>$userLike->is_mutual], 200);
         }
-        
-        return response('Failed to like user', 400);
+
+        return response('Не удалось лайкнуть пользователя', 400);
     }
 
 
@@ -114,7 +114,7 @@ class LikeController extends Controller
             ->first();
 
         if (!$userLike) {
-            return response()->json(['error' => 'User is not liked'], 400);
+            return response()->json(['error' => 'Пользователь не нравиться'], 400);
         }
 
         $isMutual = $userLike->is_mutual;
@@ -132,8 +132,8 @@ class LikeController extends Controller
 
         if ($userLike->delete()) {
             UserPointsHelper::calculateAndUpdateUserPoints($likedUser);
-            return response()->json(['message' => 'User unliked successfully', 'wasMatch' => $isMutual], 200);
+            return response()->json(['message' => 'Пользователь больше не нравиться', 'wasMatch' => $isMutual], 200);
         }
-        return response()->json(['error' => 'Failed to unlike user'], 400);
+        return response()->json(['error' => 'Не удалось убрать лайк с пользователя'], 400);
     }
 }

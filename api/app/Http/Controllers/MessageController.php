@@ -50,7 +50,7 @@ class MessageController extends Controller
                 'dateRead' => $message->date_read
             ];
         })
-            ->filter(); 
+            ->filter();
 
         $messages = $messages->values();
 
@@ -64,13 +64,13 @@ class MessageController extends Controller
         $username = Auth::user()->username;
 
         if (strtolower($username) === strtolower($request->recipient_username)) {
-            return response()->json("You cannot send messages to yourself", 400);
+            return response()->json("Вы не можете отправлять сообщения самому себе", 400);
         }
 
         $sender = User::where('username', $username)->first();
         $recipient = User::where('username', $request->recipient_username)->first();
         if (!$recipient) {
-            return response()->json("Recipient not found", 404);
+            return response()->json("Получатель не найден", 404);
         }
 
         $responseMessage = new Message();

@@ -20,11 +20,11 @@ class AdminController extends Controller
 
     public function index(){
 
-        if (Auth::payload()->get('role') !== 'admin' && Auth::payload()->get('role')!=='moderator') return response('Only admins and moderators has access',403);
+        if (Auth::payload()->get('role') !== 'admin' && Auth::payload()->get('role')!=='moderator') return response('Доступ есть только у администраторов и модераторов',403);
 
         $users = User::all()->map(function ($user) {
             $isBanned = BanHelper::getBannedDays($user);
-    
+
             return [
                 'username' => $user->username,
                 'email' => $user->email,
@@ -42,7 +42,7 @@ class AdminController extends Controller
         $user = User::where('username', $username)->firstOrFail();
         $user->role_id = Role::where('name', $role)->first()->id;
         $user->save();
-    
+
         return response()->json($role);
     }
 }

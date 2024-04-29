@@ -119,7 +119,7 @@ class UsersController extends Controller
         $user = User::where('username', auth()->user()->username)->first();
 
         if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => 'Пользователь не найден'], 404);
         }
 
         $request['looking_for'] = $request['lookingFor'];
@@ -127,15 +127,15 @@ class UsersController extends Controller
         $user->fill($request->all());
 
         if (!$user->isDirty()) {
-            return response()->json(['message' => 'No changes detected.'], 200);
+            return response()->json(['message' => 'Изменений не обнаружено.'], 200);
         }
 
         if ($user->save()) {
             UserPointsHelper::calculateAndUpdateUserPoints($user);
-            return response()->json(['message' => 'User updated successfully'], 200);
+            return response()->json(['message' => 'Пользователь успешно обновился'], 200);
         }
 
-        return response()->json(['error' => 'Failed to update user'], 500);
+        return response()->json(['error' => 'Не удалось обновить пользователя'], 500);
     }
 
 
@@ -144,32 +144,32 @@ class UsersController extends Controller
         $request->validated();
 
         $user = User::find(Auth::user()->id);
-        
+
         if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => 'Пользователь не найден'], 404);
         }
-        
+
         if (!$request->hasFile('file') || !$request->file('file')->isValid()) {
-            return response()->json(['error' => 'Invalid file'], 400);
+            return response()->json(['error' => 'Недопустимый файл'], 400);
         }
-        
+
         if ($user->photos->count() >= 5) {
-            return response()->json(['error' => 'You cannot upload more than 5 photos'], 400);
+            return response()->json(['error' => 'Вы не можете загрузить более 5 фотографий'], 400);
         }
-        
+
         $file = $request->file('file');
         $path = $file->store('public/photos');
-        
+
         $photo = new Photo();
         $photo->url = asset(Storage::url($path)); // Use Storage::url() to generate the URL
         $photo->user_id = $user->id;
-        
+
         if ($user->photos->isEmpty()) {
             $photo->is_main = true;
         } else {
             $photo->is_main = false;
         }
-        
+
         if ($photo->save()) {
             $user = User::find(Auth::user()->id);
             $nextPhotoPoints = DefaultPoint::where('what_for', 'next_photo')->first()->points;
@@ -178,43 +178,43 @@ class UsersController extends Controller
             $photo['isMain'] = $photo->is_main;
             return response()->json($photo);
         }
-        
-        return response()->json(["error" => "Failed to save photo"]);
-        
+
+        return response()->json(["error" => "Не удалось сохранить фотографию"]);
+
 
     }
 
     public function deletePhoto($id)
     {
         $photo = Photo::find($id);
-    
+
         if (!$photo) {
-            return response()->json(['error' => 'Photo not found'], 404);
+            return response()->json(['error' => 'Фотография не найдена'], 404);
         }
-    
+
         if ($photo->user_id !== Auth::user()->id) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Неавторизованный'], 401);
         }
-    
+
         $photoUrl = $photo->url;
         $path = str_replace(asset(Storage::url('')), 'public', $photoUrl);
-    
+
         if (Storage::exists($path)) {
             Storage::delete($path);
         }
-    
+
         if ($photo->delete()) {
             $user = User::find(Auth::user()->id);
             $nextPhotoPoints = DefaultPoint::where('what_for', 'next_photo')->first()->points;
             $user->points -= $nextPhotoPoints;
             $user->save();
-            return response()->json(['message' => 'Photo deleted successfully']);
+            return response()->json(['message' => 'Фотография успешно удалена']);
         }
-    
-        return response()->json(["error" => "Failed to delete photo"]);
+
+        return response()->json(["error" => "Не удалось удалить фотографию"]);
     }
-    
-    
+
+
 
 
     public function setMainPhoto($photoId)
@@ -222,7 +222,7 @@ class UsersController extends Controller
         $user = Auth::user();
 
         if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => 'Пользователь не найден'], 404);
         }
 
         $photo = Photo::where('id', $photoId)
@@ -230,11 +230,11 @@ class UsersController extends Controller
             ->first();
 
         if (!$photo) {
-            return response()->json(['error' => 'Photo not found'], 404);
+            return response()->json(['error' => 'Фотография не найдена'], 404);
         }
 
         if ($photo->isMain) {
-            return response()->json(['error' => 'This is already your main photo'], 400);
+            return response()->json(['error' => 'Это уже ваша главная фотография'], 400);
         }
 
         $currentMain = Photo::where('user_id', $user->id)
@@ -249,6 +249,6 @@ class UsersController extends Controller
         $photo->is_main = true;
         $photo->save();
 
-        return response()->json(['message' => 'Main photo set successfully']);
+        return response()->json(['message' => 'Основная фотография установлена успешно']);
     }
 }
