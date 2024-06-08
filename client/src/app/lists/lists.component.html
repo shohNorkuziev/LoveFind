@@ -1,6 +1,6 @@
 <div class="text-center m-3">
   <h2>
-    {{predicate === 'liked' ? 'Избранное' : predicate === 'likedBy' ? 'Взаимные симпатии' : 'Совпадения'}}
+    {{predicate === 'liked' ? 'Ваши лайки' : predicate === 'likedBy' ? 'Лайкнувшие вас' : 'Взаимные симпатии'}}
   </h2>
 </div>
 
@@ -9,11 +9,11 @@
     <form #form="ngForm" class="d-flex mb-3" autocomplete="off">
       <div class="btn-group">
         <button name="predicate" (click)="loadLikes()" class="btn btn-primary" [class.unactive]="predicate!=='matches'"
-            btnRadio="matches" [(ngModel)]="predicate">Совпадения</button>
+            btnRadio="matches" [(ngModel)]="predicate">Взаимные симпатии</button>
         <button name="predicate" (click)="loadLikes()" class="btn btn-primary" [class.unactive]="predicate!=='liked'"  
-          btnRadio="liked" [(ngModel)]="predicate">Избранное</button>
+          btnRadio="liked" [(ngModel)]="predicate">Ваши лайки</button>
         <button name="predicate" (click)="loadLikes()" class="btn btn-primary " [class.unactive]="predicate!=='likedBy'"
-            btnRadio="likedBy" [(ngModel)]="predicate">Взаимные симпатии</button>
+            btnRadio="likedBy" [(ngModel)]="predicate">Лайкнувшие вас</button>
       </div>
     </form>
   </div>

@@ -33,7 +33,7 @@
         <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/admin/users',true)"  routerLink="/admin/users" routerLinkActive="active"><i class="fa fa-user"></i> Управление пользователями</a>
     </div>
     <div class="navigation-row" *appHasRole="['admin','moderator']">
-        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/admin/reports',true)"  routerLink="/admin/reports" routerLinkActive="active"><i class="fa fa-list"></i> Отчеты</a>
+        <a class="navigation-link" (click)="isMobile && hide()" [class.text-gradient]="router.isActive('/admin/reports',true)"  routerLink="/admin/reports" routerLinkActive="active"><i class="fa fa-list"></i> Жалобы</a>
     </div>
 
     <!-- <div class="navigation-row navigation-members">
